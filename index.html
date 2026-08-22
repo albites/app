@@ -63,11 +63,11 @@
     z-index: 1;
   }
 
-  /* ---- ヘッダー ---- */
-  header {
+  /* ---- ヒーロー ---- */
+  .hero {
     padding: var(--pad-head) 0 8px;
   }
-  .profile {
+  .hero-head {
     display: flex;
     align-items: center;
     gap: var(--gap-profile);
@@ -100,16 +100,13 @@
   }
   .handle a:hover { text-decoration: underline; }
 
-  .intro {
+  .lede {
+    max-width: 760px;
     margin: 32px 0 0;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r-md);
-    padding: var(--pad-card);
-    color: var(--body);
-    box-shadow: 0 14px 30px -26px rgba(34, 53, 76, 0.6);
+    color: var(--sub);
+    font-size: var(--fs-sub);
   }
-  .intro strong { color: var(--ink); }
+  .lede strong { color: var(--ink); }
 
   /* ---- セクション見出し ---- */
   .section-head {
@@ -236,8 +233,8 @@
 </svg>
 
 <div class="wrap">
-  <header>
-    <div class="profile">
+  <div class="hero">
+    <div class="hero-head">
       <img class="avatar" src="https://github.com/kaleidot725.png" alt="Katz">
       <div>
         <h1>Albites Software</h1>
@@ -249,11 +246,10 @@
       </div>
     </div>
 
-    <p class="intro">
-      はじめまして、<strong>Katz</strong>です。普段はエンジニアとして働いています。<br>
-      <strong>Albites Software</strong>という名義で、個人開発としてアプリを作っています。
+    <p class="lede">
+      はじめまして、<strong>Katz</strong>です。普段はエンジニアとして働いています。<strong>Albites Software</strong>という名義で、個人開発としてアプリを作っています。
     </p>
-  </header>
+  </div>
 
   <div class="section-head">
     <h2>アプリ一覧</h2>
