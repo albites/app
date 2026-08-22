@@ -130,11 +130,22 @@
     margin-bottom: 2.4em;
   }
   .app-intro .app-name {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-weight: bold;
     color: #7a5326;
     font-size: 1.05em;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  .app-icon-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 20px -10px rgba(150, 110, 50, 0.5);
   }
 </style>
 </head>
@@ -142,12 +153,12 @@
 
 <div class="sheet">
   <a class="back-link" href="../">← albitesのアプリ一覧</a>
-  <span class="moon">🌙</span>
+  <img class="app-icon-img" src="icon.png" alt="月探しのアイコン">
   <h1 style="margin-bottom: 1.4em;">月探し (Find Moon)</h1>
 
   <p class="app-intro">
-    <span class="app-name">🌙 月探し (Find Moon)</span>
-    GPS位置情報と日付から、今日の月の状態（月齢・輝面比・月の出/月の入り時刻）を計算して表示するiOSアプリです。コンパスと仰角ゲージで、今どちらを向けば空にある月に合うかもリアルタイムに確認できます。
+    <span class="app-name">子供と月を探したい・今日はどんな月が見れる？を簡単にチェック</span>
+    「月探し」は、GPS位置情報と日付から今日の月の状態（月齢・輝面比・月の出/月の入り時刻）を計算して表示するiOSアプリです。コンパスと仰角ゲージで、今どちらを向けば空にある月に合うかもリアルタイムにわかるので、お子さんと一緒に空を見上げて月を探すときにも役立ちます。
   </p>
 
   <h1 style="font-size:1.2em;">プライバシーポリシー</h1>
