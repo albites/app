@@ -32,6 +32,10 @@
     --fs-foot: 0.86em;
     --mt-section: 72px;
     --mb-section: 26px;
+    --h-ground: 190px;
+    --size-char: 132px;
+    --char-right: 44px;
+    --char-bottom: 52px;
 
     /* ===== このページの配色 ===== */
     --bg: #f6fafe;
@@ -238,16 +242,65 @@
   /* ---- ペンギン ---- */
   .penguin {
     position: fixed;
-    right: 44px;
-    bottom: 52px;
-    width: 132px;
+    right: var(--char-right);
+    bottom: var(--char-bottom);
+    width: var(--size-char);
     pointer-events: none;
     z-index: 0;
     filter: drop-shadow(0 10px 14px rgba(34, 53, 76, 0.16));
   }
+  /* 体を左右に揺らしながら、足を交互に持ち上げて歩いているように見せる */
+  .peng-body {
+    transform-box: fill-box;
+    transform-origin: 50% 96%;
+    animation: waddle 1.15s ease-in-out infinite alternate;
+  }
+  .peng-foot-l { animation: step-up 1.15s ease-in-out infinite alternate; }
+  .peng-foot-r { animation: step-down 1.15s ease-in-out infinite alternate; }
+  .peng-wing-l,
+  .peng-wing-r {
+    transform-box: fill-box;
+    transform-origin: 50% 12%;
+  }
+  .peng-wing-l { animation: flap-l 1.15s ease-in-out infinite alternate; }
+  .peng-wing-r { animation: flap-r 1.15s ease-in-out infinite alternate; }
+
+  @keyframes waddle {
+    from { transform: rotate(-4.5deg); }
+    to   { transform: rotate(4.5deg); }
+  }
+  @keyframes step-up {
+    from { transform: translateY(-5px); }
+    to   { transform: translateY(0); }
+  }
+  @keyframes step-down {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-5px); }
+  }
+  @keyframes flap-l {
+    from { transform: rotate(-8deg); }
+    to   { transform: rotate(6deg); }
+  }
+  @keyframes flap-r {
+    from { transform: rotate(6deg); }
+    to   { transform: rotate(-8deg); }
+  }
+
   @media (max-width: 760px) {
-    .snow { height: 130px; }
-    .penguin { width: 88px; right: 16px; bottom: 34px; opacity: 0.9; }
+    :root {
+      --h-ground: 130px;
+      --size-char: 88px;
+      --char-right: 16px;
+      --char-bottom: 34px;
+    }
+  }
+  /* 動きを減らす設定のユーザーには静止させる */
+  @media (prefers-reduced-motion: reduce) {
+    .peng-body,
+    .peng-foot-l,
+    .peng-foot-r,
+    .peng-wing-l,
+    .peng-wing-r { animation: none; }
   }
 </style>
 </head>
@@ -258,25 +311,26 @@
   <path fill="#f3f9fe" d="M0,116 C250,74 486,146 768,112 C1046,78 1226,146 1440,110 L1440,190 L0,190 Z"/>
   <path fill="#ffffff" d="M0,150 C280,124 520,170 812,146 C1078,124 1244,166 1440,144 L1440,190 L0,190 Z"/>
 </svg>
-
 <svg class="penguin" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <!-- 足 -->
-  <ellipse cx="74" cy="226" rx="26" ry="11" fill="#f2a13c"/>
-  <ellipse cx="126" cy="226" rx="26" ry="11" fill="#f2a13c"/>
-  <!-- 体 -->
-  <ellipse cx="100" cy="130" rx="70" ry="97" fill="#31435e"/>
-  <!-- おなか -->
-  <ellipse cx="100" cy="168" rx="51" ry="57" fill="#fbfdff"/>
-  <!-- 翼 -->
-  <ellipse cx="33" cy="146" rx="16" ry="47" fill="#27374f" transform="rotate(9 33 146)"/>
-  <ellipse cx="167" cy="146" rx="16" ry="47" fill="#27374f" transform="rotate(-9 167 146)"/>
-  <!-- 目 -->
-  <circle cx="80" cy="88" r="13" fill="#ffffff"/>
-  <circle cx="120" cy="88" r="13" fill="#ffffff"/>
-  <circle cx="83" cy="90" r="6.5" fill="#1d2a3d"/>
-  <circle cx="117" cy="90" r="6.5" fill="#1d2a3d"/>
-  <!-- くちばし -->
-  <path d="M100 104 L115 116 L100 127 L85 116 Z" fill="#f2a13c"/>
+  <g class="peng-body">
+    <!-- 足 -->
+    <ellipse class="peng-foot-l" cx="74" cy="226" rx="26" ry="11" fill="#f2a13c"/>
+    <ellipse class="peng-foot-r" cx="126" cy="226" rx="26" ry="11" fill="#f2a13c"/>
+    <!-- 体 -->
+    <ellipse cx="100" cy="130" rx="70" ry="97" fill="#31435e"/>
+    <!-- おなか -->
+    <ellipse cx="100" cy="168" rx="51" ry="57" fill="#fbfdff"/>
+    <!-- 翼 -->
+    <g class="peng-wing-l"><ellipse cx="33" cy="146" rx="16" ry="47" fill="#27374f" transform="rotate(9 33 146)"/></g>
+    <g class="peng-wing-r"><ellipse cx="167" cy="146" rx="16" ry="47" fill="#27374f" transform="rotate(-9 167 146)"/></g>
+    <!-- 目 -->
+    <circle cx="80" cy="88" r="13" fill="#ffffff"/>
+    <circle cx="120" cy="88" r="13" fill="#ffffff"/>
+    <circle cx="83" cy="90" r="6.5" fill="#1d2a3d"/>
+    <circle cx="117" cy="90" r="6.5" fill="#1d2a3d"/>
+    <!-- くちばし -->
+    <path d="M100 104 L115 116 L100 127 L85 116 Z" fill="#f2a13c"/>
+  </g>
 </svg>
 
 <div class="wrap">

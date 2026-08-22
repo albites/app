@@ -32,6 +32,10 @@
     --fs-foot: 0.86em;
     --mt-section: 72px;
     --mb-section: 26px;
+    --h-ground: 190px;
+    --size-char: 132px;
+    --char-right: 44px;
+    --char-bottom: 52px;
 
     /* ===== このページの配色 ===== */
     --bg: #0d1226;
@@ -70,6 +74,18 @@
       radial-gradient(circle at 50% -6%, rgba(245, 228, 184, 0.16) 0%, transparent 45%),
       linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 55%);
     background-attachment: fixed;
+  }
+
+  /* 地面 */
+  .ground {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--h-ground);
+    z-index: 0;
+    pointer-events: none;
   }
 
   .wrap {
@@ -279,9 +295,101 @@
     padding-top: 24px;
     border-top: 1px solid var(--line);
   }
+
+  /* ---- 月うさぎ ---- */
+  .rabbit {
+    position: fixed;
+    right: var(--char-right);
+    bottom: var(--char-bottom);
+    width: var(--size-char);
+    pointer-events: none;
+    z-index: 0;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.55));
+  }
+  /* しゃがんで溜めてから跳ねる動きと、耳のぴくつきを組み合わせる */
+  .rab-body {
+    transform-box: fill-box;
+    transform-origin: 50% 96%;
+    animation: hop 3.4s ease-in-out infinite;
+  }
+  .rab-ear-l,
+  .rab-ear-r {
+    transform-box: fill-box;
+    transform-origin: 50% 92%;
+  }
+  .rab-ear-l { animation: ear-l 3.4s ease-in-out infinite; }
+  .rab-ear-r { animation: ear-r 3.4s ease-in-out infinite; }
+
+  @keyframes hop {
+    0%, 60%, 100% { transform: translateY(0) scaleY(1); }
+    66%           { transform: translateY(0) scaleY(0.92); }
+    75%           { transform: translateY(-18px) scaleY(1.05); }
+    84%           { transform: translateY(0) scaleY(0.95); }
+    90%           { transform: translateY(0) scaleY(1); }
+  }
+  @keyframes ear-l {
+    0%, 28%, 46%, 100% { transform: rotate(0deg); }
+    34%                { transform: rotate(-11deg); }
+    40%                { transform: rotate(4deg); }
+  }
+  @keyframes ear-r {
+    0%, 30%, 48%, 100% { transform: rotate(0deg); }
+    36%                { transform: rotate(10deg); }
+    42%                { transform: rotate(-3deg); }
+  }
+
+  @media (max-width: 760px) {
+    :root {
+      --h-ground: 130px;
+      --size-char: 88px;
+      --char-right: 16px;
+      --char-bottom: 34px;
+    }
+  }
+  /* 動きを減らす設定のユーザーには静止させる */
+  @media (prefers-reduced-motion: reduce) {
+    .rab-body,
+    .rab-ear-l,
+    .rab-ear-r { animation: none; }
+  }
 </style>
 </head>
 <body>
+
+<svg class="ground" viewBox="0 0 1440 190" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path fill="#0b1020" d="M0,86 C220,36 430,116 726,84 C1010,54 1214,124 1440,74 L1440,190 L0,190 Z"/>
+  <path fill="#080c1a" d="M0,116 C250,74 486,146 768,112 C1046,78 1226,146 1440,110 L1440,190 L0,190 Z"/>
+  <path fill="#050810" d="M0,150 C280,124 520,170 812,146 C1078,124 1244,166 1440,144 L1440,190 L0,190 Z"/>
+  <!-- 月あかりが当たる稜線 -->
+  <path fill="none" stroke="rgba(245,228,184,0.22)" stroke-width="1.5"
+        d="M0,116 C250,74 486,146 768,112 C1046,78 1226,146 1440,110"/>
+</svg>
+
+<svg class="rabbit" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g class="rab-body">
+    <!-- 耳 -->
+    <g class="rab-ear-l">
+      <ellipse cx="80" cy="54" rx="13" ry="41" fill="#f3efe2" transform="rotate(-8 80 54)"/>
+      <ellipse cx="80" cy="57" rx="6.5" ry="30" fill="#dd9aa4" transform="rotate(-8 80 57)"/>
+    </g>
+    <g class="rab-ear-r">
+      <ellipse cx="120" cy="54" rx="13" ry="41" fill="#f3efe2" transform="rotate(8 120 54)"/>
+      <ellipse cx="120" cy="57" rx="6.5" ry="30" fill="#dd9aa4" transform="rotate(8 120 57)"/>
+    </g>
+    <!-- 体 -->
+    <ellipse cx="100" cy="188" rx="57" ry="51" fill="#f3efe2"/>
+    <!-- 前足 -->
+    <ellipse cx="76" cy="230" rx="18" ry="10" fill="#fbf8f0"/>
+    <ellipse cx="124" cy="230" rx="18" ry="10" fill="#fbf8f0"/>
+    <!-- 頭 -->
+    <ellipse cx="100" cy="124" rx="48" ry="44" fill="#fbf8f0"/>
+    <!-- 目 -->
+    <circle cx="81" cy="120" r="5.5" fill="#2a2438"/>
+    <circle cx="119" cy="120" r="5.5" fill="#2a2438"/>
+    <!-- 鼻 -->
+    <path d="M100 133 L105 138 L100 142 L95 138 Z" fill="#dd9aa4"/>
+  </g>
+</svg>
 
 <div class="wrap">
   <div class="topbar">
