@@ -49,6 +49,13 @@
   }
   * { box-sizing: border-box; }
 
+  /* アンカーリンクで飛んだとき、見出しが画面上端に張り付かないようにする */
+  [id] { scroll-margin-top: 32px; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
   body {
     font-family: var(--font);
     font-size: var(--fs-base);
@@ -354,7 +361,7 @@
     </p>
   </div>
 
-  <div class="section-head">
+  <div class="section-head" id="apps">
     <h2>アプリ一覧</h2>
     <span class="chip">APPS</span>
   </div>

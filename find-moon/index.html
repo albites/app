@@ -50,6 +50,13 @@
   }
   * { box-sizing: border-box; }
 
+  /* アンカーリンクで飛んだとき、見出しが画面上端に張り付かないようにする */
+  [id] { scroll-margin-top: 32px; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
   body {
     font-family: var(--font);
     font-size: var(--fs-base);
@@ -422,13 +429,13 @@
     <img src="screenshots/settings.png" alt="設定画面のスクリーンショット">
   </div>
 
-  <div class="section-head">
+  <div class="section-head" id="privacy">
     <h2>プライバシーポリシー</h2>
     <span class="chip">PRIVACY</span>
   </div>
 
   <div class="policy">
-    <p class="policy-title">日本語</p>
+    <p class="policy-title" id="privacy-ja">日本語</p>
     <p class="updated">最終更新日: 2026年8月22日</p>
 
     <p class="lead">
@@ -465,7 +472,7 @@
 
     <div class="divider"></div>
 
-    <p class="policy-title">English</p>
+    <p class="policy-title" id="privacy-en">English</p>
     <p class="updated">Last updated: August 22, 2026</p>
 
     <p class="lead">
