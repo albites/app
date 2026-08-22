@@ -6,24 +6,50 @@
 <title>月探し (Find Moon) | Albites Software</title>
 <style>
   :root {
-    --night: #0d1226;
-    --night-2: #151d3b;
-    --panel: rgba(255, 255, 255, 0.045);
-    --panel-line: rgba(190, 205, 255, 0.14);
-    --ink: #dfe4f5;
+    /* ===== 共通パラメーター（全ページで同じ値にすること） ===== */
+    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+    --lh: 1.85;
+    --wrap: 1040px;
+    --r-lg: 24px;
+    --r-md: 18px;
+    --r-sm: 16px;
+    --pad-page: 0 20px 140px;
+    --pad-head: 84px;
+    --pad-card: 22px 24px;
+    --pad-panel: 34px clamp(24px, 5vw, 44px) 40px;
+    --gap-grid: 20px;
+    --gap-profile: 26px;
+    --size-avatar: 96px;
+    --size-appicon: 64px;
+    --fs-h1: clamp(1.8em, 4vw, 2.35em);
+    --fs-h2: 1.12em;
+    --fs-h3: 1.02em;
+    --fs-sub: 0.86em;
+    --fs-small: 0.83em;
+    --fs-foot: 0.78em;
+    --mt-section: 72px;
+    --mb-section: 26px;
+
+    /* ===== このページの配色 ===== */
+    --bg: #0d1226;
+    --bg-2: #151d3b;
+    --card: rgba(255, 255, 255, 0.045);
+    --ink: #ffffff;
+    --body: #dfe4f5;
     --sub: #96a0c4;
-    --moon: #f5e4b8;
-    --moon-soft: rgba(245, 228, 184, 0.28);
+    --accent: #f5e4b8;
+    --accent-soft: rgba(245, 228, 184, 0.28);
+    --line: rgba(190, 205, 255, 0.14);
   }
   * { box-sizing: border-box; }
 
   body {
-    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.9;
+    font-family: var(--font);
+    line-height: var(--lh);
     margin: 0;
-    padding: 0 20px 120px;
-    color: var(--ink);
-    background-color: var(--night);
+    padding: var(--pad-page);
+    color: var(--body);
+    background-color: var(--bg);
     background-image:
       /* 星 */
       radial-gradient(1.5px 1.5px at 12% 8%, rgba(255,255,255,0.9), transparent),
@@ -38,186 +64,210 @@
       radial-gradient(1px 1px at 20% 52%, rgba(255,255,255,0.4), transparent),
       /* 月あかり */
       radial-gradient(circle at 50% -6%, rgba(245, 228, 184, 0.16) 0%, transparent 45%),
-      linear-gradient(180deg, var(--night-2) 0%, var(--night) 55%);
+      linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 55%);
     background-attachment: fixed;
   }
 
   .wrap {
-    max-width: 1040px;
+    max-width: var(--wrap);
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
-  a { color: var(--moon); text-decoration: none; }
+  a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   .back-link {
     display: inline-block;
     margin: 40px 0 0;
-    font-size: 0.85em;
+    font-size: var(--fs-sub);
     color: var(--sub);
   }
-  .back-link:hover { color: var(--moon); text-decoration: none; }
+  .back-link:hover { color: var(--accent); text-decoration: none; }
 
   /* ---- ヒーロー ---- */
   .hero {
-    padding: 46px 0 8px;
+    padding: 44px 0 8px;
   }
   .hero-head {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: var(--gap-profile);
     flex-wrap: wrap;
   }
   .app-icon-img {
-    width: 96px;
-    height: 96px;
-    border-radius: 24px;
     display: block;
+    width: var(--size-avatar);
+    height: var(--size-avatar);
+    border-radius: var(--r-lg);
     flex-shrink: 0;
     box-shadow:
-      0 0 0 1px rgba(245, 228, 184, 0.25),
+      0 0 0 1px var(--accent-soft),
       0 22px 50px -18px rgba(245, 228, 184, 0.4);
   }
   h1 {
-    font-size: clamp(1.7em, 4vw, 2.3em);
-    margin: 0 0 6px;
-    color: #fff;
-    letter-spacing: 0.02em;
+    font-size: var(--fs-h1);
+    margin: 0 0 4px;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    font-weight: 700;
   }
   .tagline {
-    color: var(--moon);
-    font-size: clamp(0.95em, 2.2vw, 1.08em);
+    color: var(--accent);
+    font-size: var(--fs-sub);
     margin: 0;
   }
   .lede {
     max-width: 760px;
-    margin: 26px 0 0;
+    margin: 32px 0 0;
     color: var(--sub);
-    font-size: 0.96em;
+    font-size: var(--fs-sub);
   }
 
   /* ---- 特徴 ---- */
   .features {
     list-style: none;
     padding: 0;
-    margin: 46px 0 0;
+    margin: var(--mt-section) 0 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--gap-grid);
   }
   .features li {
-    background: var(--panel);
-    border: 1px solid var(--panel-line);
-    border-radius: 18px;
-    padding: 20px 22px;
-    font-size: 0.9em;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: var(--pad-card);
+    font-size: var(--fs-small);
     color: var(--sub);
+    line-height: 1.7;
   }
   .features b {
     display: block;
-    color: var(--ink);
-    font-size: 1.02em;
-    margin-bottom: 4px;
+    color: var(--body);
+    font-size: 1.16em;
+    font-weight: 700;
+    margin-bottom: 3px;
   }
 
   /* ---- スクリーンショット ---- */
   .screenshots {
     display: flex;
-    gap: 22px;
+    gap: var(--gap-grid);
     flex-wrap: wrap;
-    margin: 48px 0 0;
+    margin: var(--mt-section) 0 0;
   }
   .screenshots img {
     width: 240px;
     max-width: 74vw;
-    border-radius: 22px;
-    border: 1px solid var(--panel-line);
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
     box-shadow: 0 26px 50px -26px rgba(0, 0, 0, 0.9);
   }
 
-  /* ---- 区切り ---- */
-  .divider {
+  /* ---- セクション見出し ---- */
+  .section-head {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 84px 0 34px;
-    color: var(--sub);
-    font-size: 0.78em;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    margin: var(--mt-section) 0 var(--mb-section);
   }
-  .divider::after {
+  .section-head h2 {
+    font-size: var(--fs-h2);
+    color: var(--ink);
+    margin: 0;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+  .section-head::after {
     content: "";
     flex: 1;
     height: 1px;
-    background: var(--panel-line);
+    background: var(--line);
+  }
+  .chip {
+    background: rgba(245, 228, 184, 0.14);
+    color: var(--accent);
+    font-size: 0.7em;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
   }
 
   /* ---- ポリシー ---- */
   .policy {
-    background: var(--panel);
-    border: 1px solid var(--panel-line);
-    border-radius: 24px;
-    padding: 40px clamp(24px, 5vw, 48px) 46px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: var(--pad-panel);
   }
-  .section-title {
-    font-size: 1.35em;
-    color: #fff;
-    margin: 0 0 4px;
+  .policy-title {
+    font-size: var(--fs-h2);
+    color: var(--ink);
+    font-weight: 700;
+    margin: 0 0 2px;
   }
   .updated {
     color: var(--sub);
-    font-size: 0.85em;
-    margin: 0 0 2.2em;
+    font-size: var(--fs-small);
+    margin: 0 0 2em;
   }
   .lead {
     background: rgba(245, 228, 184, 0.07);
-    border: 1px solid var(--moon-soft);
-    border-radius: 16px;
-    padding: 20px 24px;
-    color: var(--ink);
-    font-size: 0.95em;
+    border: 1px solid var(--accent-soft);
+    border-radius: var(--r-sm);
+    padding: var(--pad-card);
+    color: var(--body);
+    font-size: var(--fs-sub);
     margin: 0;
   }
   h2 {
-    font-size: 1.02em;
+    font-size: var(--fs-h3);
     margin: 2.4em 0 0.7em;
-    color: var(--moon);
+    color: var(--accent);
     display: flex;
     align-items: center;
     gap: 10px;
+    font-weight: 700;
   }
   h2::before {
     content: "";
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--moon);
-    box-shadow: 0 0 10px var(--moon);
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
     flex-shrink: 0;
   }
   .policy ul {
     padding-left: 1.3em;
     margin: 0;
-    font-size: 0.95em;
+    font-size: var(--fs-sub);
   }
-  .policy li { margin-bottom: 0.55em; }
-  .policy p { font-size: 0.95em; }
-  strong { color: #fff; }
+  .policy li { margin-bottom: 0.5em; }
+  .policy p { font-size: var(--fs-sub); }
+  strong { color: var(--ink); }
   .contact-box {
     background: rgba(245, 228, 184, 0.07);
-    border: 1px solid var(--moon-soft);
-    border-radius: 16px;
-    padding: 20px 24px;
-    font-size: 0.95em;
+    border: 1px solid var(--accent-soft);
+    border-radius: var(--r-sm);
+    padding: var(--pad-card);
+    font-size: var(--fs-sub);
+  }
+  .policy .divider {
+    margin: 3.4em 0 var(--mb-section);
+    height: 1px;
+    background: var(--line);
   }
 
   footer {
     color: var(--sub);
-    font-size: 0.8em;
-    margin-top: 64px;
+    font-size: var(--fs-foot);
+    margin-top: 84px;
     padding-top: 24px;
-    border-top: 1px solid var(--panel-line);
+    border-top: 1px solid var(--line);
   }
 </style>
 </head>
@@ -251,10 +301,13 @@
     <img src="screenshots/settings.png" alt="設定画面のスクリーンショット">
   </div>
 
-  <div class="divider">Privacy Policy</div>
+  <div class="section-head">
+    <h2>プライバシーポリシー</h2>
+    <span class="chip">PRIVACY</span>
+  </div>
 
   <div class="policy">
-    <p class="section-title">プライバシーポリシー</p>
+    <p class="policy-title">日本語</p>
     <p class="updated">最終更新日: 2026年8月22日</p>
 
     <p class="lead">
@@ -289,9 +342,9 @@
       <a href="mailto:albites@proton.me">albites@proton.me</a>
     </div>
 
-    <div class="divider">English</div>
+    <div class="divider"></div>
 
-    <p class="section-title">Privacy Policy</p>
+    <p class="policy-title">English</p>
     <p class="updated">Last updated: August 22, 2026</p>
 
     <p class="lead">
