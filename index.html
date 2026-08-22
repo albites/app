@@ -15,7 +15,7 @@
     --r-lg: 24px;
     --r-md: 18px;
     --r-sm: 16px;
-    --pad-page: 0 20px 140px;
+    --pad-page: 0 20px 200px;
     --pad-head: 84px;
     --pad-card: 24px 26px;
     --pad-panel: 36px clamp(24px, 5vw, 46px) 42px;
@@ -53,10 +53,36 @@
     color: var(--ink);
     background-color: var(--bg);
     background-image:
-      radial-gradient(circle at 82% 4%, rgba(61, 127, 196, 0.10) 0%, transparent 42%),
-      radial-gradient(circle at 6% 46%, rgba(61, 127, 196, 0.07) 0%, transparent 34%),
-      linear-gradient(180deg, #ffffff 0%, var(--bg) 40%);
+      radial-gradient(circle at 84% -4%, rgba(61, 127, 196, 0.16) 0%, transparent 46%),
+      radial-gradient(circle at 4% 34%, rgba(61, 127, 196, 0.10) 0%, transparent 38%),
+      radial-gradient(circle at 70% 78%, rgba(120, 180, 230, 0.10) 0%, transparent 40%),
+      linear-gradient(180deg, #ffffff 0%, var(--bg) 38%, #eef6fd 100%);
     background-attachment: fixed;
+  }
+
+  /* 背景のドットテクスチャ */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(61, 127, 196, 0.13) 1.4px, transparent 1.5px);
+    background-size: 28px 28px;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 55%, transparent 85%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 55%, transparent 85%);
+  }
+
+  /* 雪原 */
+  .snow {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 190px;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .wrap {
@@ -204,19 +230,26 @@
   /* ---- ペンギン ---- */
   .penguin {
     position: fixed;
-    right: 28px;
-    bottom: 0;
+    right: 44px;
+    bottom: 52px;
     width: 132px;
     pointer-events: none;
     z-index: 0;
-    filter: drop-shadow(0 12px 18px rgba(34, 53, 76, 0.18));
+    filter: drop-shadow(0 10px 14px rgba(34, 53, 76, 0.16));
   }
   @media (max-width: 760px) {
-    .penguin { width: 88px; right: 12px; opacity: 0.85; }
+    .snow { height: 130px; }
+    .penguin { width: 88px; right: 16px; bottom: 34px; opacity: 0.9; }
   }
 </style>
 </head>
 <body>
+
+<svg class="snow" viewBox="0 0 1440 190" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path fill="#e4f0fb" d="M0,86 C220,36 430,116 726,84 C1010,54 1214,124 1440,74 L1440,190 L0,190 Z"/>
+  <path fill="#f3f9fe" d="M0,116 C250,74 486,146 768,112 C1046,78 1226,146 1440,110 L1440,190 L0,190 Z"/>
+  <path fill="#ffffff" d="M0,150 C280,124 520,170 812,146 C1078,124 1244,166 1440,144 L1440,190 L0,190 Z"/>
+</svg>
 
 <svg class="penguin" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <!-- 足 -->
