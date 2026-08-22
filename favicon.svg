@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 背景 -->
+  <circle cx="32" cy="32" r="32" fill="#dcebfa"/>
+  <!-- 体・頭 -->
+  <ellipse cx="32" cy="37" rx="23" ry="25" fill="#31435e"/>
+  <!-- 翼 -->
+  <ellipse cx="11" cy="42" rx="6" ry="15" fill="#27374f" transform="rotate(10 11 42)"/>
+  <ellipse cx="53" cy="42" rx="6" ry="15" fill="#27374f" transform="rotate(-10 53 42)"/>
+  <!-- おなか -->
+  <ellipse cx="32" cy="49" rx="14" ry="15" fill="#fbfdff"/>
+  <!-- 目 -->
+  <circle cx="23" cy="28" r="5.5" fill="#ffffff"/>
+  <circle cx="41" cy="28" r="5.5" fill="#ffffff"/>
+  <circle cx="24" cy="29" r="2.8" fill="#1d2a3d"/>
+  <circle cx="40" cy="29" r="2.8" fill="#1d2a3d"/>
+  <!-- くちばし -->
+  <path d="M32 34 L38 39.5 L32 45 L26 39.5 Z" fill="#f2a13c"/>
+</svg>
