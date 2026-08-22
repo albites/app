@@ -6,186 +6,238 @@
 <title>月探し (Find Moon) | Albites Software</title>
 <style>
   :root {
-    --bg: #fbf3e7;
-    --card: #fffdf8;
-    --ink: #4a3f35;
-    --sub: #8a7a68;
-    --accent: #d98e46;
-    --accent-soft: #f3d9b1;
-    --line: #ecdfc9;
+    --night: #0d1226;
+    --night-2: #151d3b;
+    --panel: rgba(255, 255, 255, 0.045);
+    --panel-line: rgba(190, 205, 255, 0.14);
+    --ink: #dfe4f5;
+    --sub: #96a0c4;
+    --moon: #f5e4b8;
+    --moon-soft: rgba(245, 228, 184, 0.28);
   }
   * { box-sizing: border-box; }
+
   body {
     font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.9;
     margin: 0;
-    padding: 56px 20px 96px;
+    padding: 0 20px 120px;
     color: var(--ink);
-    background: radial-gradient(circle at 50% -10%, #fff6e8 0%, var(--bg) 55%);
+    background-color: var(--night);
+    background-image:
+      /* 星 */
+      radial-gradient(1.5px 1.5px at 12% 8%, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1px 1px at 27% 22%, rgba(255,255,255,0.65), transparent),
+      radial-gradient(1.6px 1.6px at 42% 6%, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 63% 17%, rgba(255,255,255,0.55), transparent),
+      radial-gradient(1.4px 1.4px at 81% 9%, rgba(255,255,255,0.85), transparent),
+      radial-gradient(1px 1px at 91% 27%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.2px 1.2px at 7% 36%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 55% 33%, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1.5px 1.5px at 73% 44%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 20% 52%, rgba(255,255,255,0.4), transparent),
+      /* 月あかり */
+      radial-gradient(circle at 50% -6%, rgba(245, 228, 184, 0.16) 0%, transparent 45%),
+      linear-gradient(180deg, var(--night-2) 0%, var(--night) 55%);
+    background-attachment: fixed;
   }
-  .sheet {
-    max-width: 700px;
+
+  .wrap {
+    max-width: 1040px;
     margin: 0 auto;
-    background: var(--card);
-    border-radius: 28px;
-    padding: 48px clamp(24px, 6vw, 56px) 56px;
-    box-shadow: 0 24px 60px -30px rgba(150, 110, 50, 0.35);
-    border: 1px solid var(--line);
   }
-  .moon {
-    font-size: 2.4em;
-    display: block;
+
+  a { color: var(--moon); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .back-link {
+    display: inline-block;
+    margin: 40px 0 0;
+    font-size: 0.85em;
+    color: var(--sub);
+  }
+  .back-link:hover { color: var(--moon); text-decoration: none; }
+
+  /* ---- ヒーロー ---- */
+  .hero {
     text-align: center;
-    margin-bottom: 8px;
+    padding: 46px 0 8px;
+  }
+  .app-icon-img {
+    width: 96px;
+    height: 96px;
+    border-radius: 24px;
+    display: block;
+    margin: 0 auto 22px;
+    box-shadow:
+      0 0 0 1px rgba(245, 228, 184, 0.25),
+      0 22px 50px -18px rgba(245, 228, 184, 0.4);
   }
   h1 {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 0 0 6px;
-    color: #7a5326;
+    font-size: clamp(1.7em, 4vw, 2.3em);
+    margin: 0 0 10px;
+    color: #fff;
+    letter-spacing: 0.02em;
   }
-  .updated {
-    text-align: center;
+  .tagline {
+    color: var(--moon);
+    font-size: clamp(0.95em, 2.2vw, 1.08em);
+    margin: 0 0 22px;
+  }
+  .lede {
+    max-width: 720px;
+    margin: 0 auto;
     color: var(--sub);
-    font-size: 0.88em;
-    margin-bottom: 2.4em;
+    font-size: 0.96em;
   }
-  .lead {
-    background: #fdf5e6;
-    border: 1px solid var(--accent-soft);
-    border-radius: 16px;
-    padding: 18px 22px;
-    color: #6b5842;
+
+  /* ---- 特徴 ---- */
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 46px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
   }
-  h2 {
-    font-size: 1.08em;
-    margin-top: 2.2em;
-    margin-bottom: 0.8em;
-    color: #7a5326;
+  .features li {
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 18px;
+    padding: 20px 22px;
+    font-size: 0.9em;
+    color: var(--sub);
+  }
+  .features b {
+    display: block;
+    color: var(--ink);
+    font-size: 1.02em;
+    margin-bottom: 4px;
+  }
+
+  /* ---- スクリーンショット ---- */
+  .screenshots {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    gap: 22px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 48px 0 0;
   }
-  h2::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
+  .screenshots img {
+    width: 240px;
+    max-width: 74vw;
+    border-radius: 22px;
+    border: 1px solid var(--panel-line);
+    box-shadow: 0 26px 50px -26px rgba(0, 0, 0, 0.9);
   }
-  ul {
-    padding-left: 1.3em;
-    margin: 0;
-  }
-  li { margin-bottom: 0.5em; }
-  strong { color: #7a5326; }
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-soft);
-  }
-  a:hover { border-bottom-color: var(--accent); }
-  .contact-box {
-    background: #fdf5e6;
-    border-radius: 16px;
-    padding: 18px 22px;
-    border: 1px solid var(--accent-soft);
-  }
+
+  /* ---- 区切り ---- */
   .divider {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin: 3.4em 0 2.6em;
+    gap: 16px;
+    margin: 84px 0 34px;
     color: var(--sub);
-    font-size: 0.85em;
+    font-size: 0.78em;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
   .divider::before,
   .divider::after {
     content: "";
     flex: 1;
     height: 1px;
-    background: var(--line);
+    background: var(--panel-line);
   }
-  .home-link {
-    display: block;
-    text-align: center;
-    margin-top: 3em;
-    font-size: 0.9em;
-  }
-  .back-link {
-    display: inline-block;
-    margin-bottom: 1.8em;
-    font-size: 0.85em;
-    color: var(--sub);
-    border-bottom: none;
-  }
-  .app-intro {
-    text-align: center;
-    color: #6b5842;
-    background: #fdf5e6;
-    border: 1px solid var(--accent-soft);
-    border-radius: 16px;
-    padding: 20px 22px;
-    margin-bottom: 2.4em;
-  }
-  .app-intro .app-name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-weight: bold;
-    color: #7a5326;
-    font-size: 1.05em;
-    margin-bottom: 8px;
-  }
-  .app-icon-img {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    display: block;
-    margin: 0 auto 16px;
-    box-shadow: 0 8px 20px -10px rgba(150, 110, 50, 0.5);
-  }
-  .screenshots {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    padding: 4px 4px 12px;
-    margin-bottom: 2.4em;
-  }
-  .screenshots img {
-    height: 320px;
-    border-radius: 18px;
-    box-shadow: 0 16px 30px -18px rgba(150, 110, 50, 0.45);
-    border: 1px solid var(--line);
-    flex-shrink: 0;
+
+  /* ---- ポリシー ---- */
+  .policy {
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 24px;
+    padding: 40px clamp(24px, 5vw, 48px) 46px;
   }
   .section-title {
     text-align: center;
-    font-size: 1.3em;
-    color: #7a5326;
-    margin: 0 0 0.3em;
+    font-size: 1.35em;
+    color: #fff;
+    margin: 0 0 4px;
   }
-  .section-sub {
+  .updated {
     text-align: center;
     color: var(--sub);
     font-size: 0.85em;
-    margin-bottom: 2em;
+    margin: 0 0 2.2em;
+  }
+  .lead {
+    background: rgba(245, 228, 184, 0.07);
+    border: 1px solid var(--moon-soft);
+    border-radius: 16px;
+    padding: 20px 24px;
+    color: var(--ink);
+    font-size: 0.95em;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.02em;
+    margin: 2.4em 0 0.7em;
+    color: var(--moon);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--moon);
+    box-shadow: 0 0 10px var(--moon);
+    flex-shrink: 0;
+  }
+  .policy ul {
+    padding-left: 1.3em;
+    margin: 0;
+    font-size: 0.95em;
+  }
+  .policy li { margin-bottom: 0.55em; }
+  .policy p { font-size: 0.95em; }
+  strong { color: #fff; }
+  .contact-box {
+    background: rgba(245, 228, 184, 0.07);
+    border: 1px solid var(--moon-soft);
+    border-radius: 16px;
+    padding: 20px 24px;
+    font-size: 0.95em;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--sub);
+    font-size: 0.8em;
+    margin-top: 64px;
   }
 </style>
 </head>
 <body>
 
-<div class="sheet">
+<div class="wrap">
   <a class="back-link" href="../">← Albites Softwareのアプリ一覧</a>
-  <img class="app-icon-img" src="icon.png" alt="月探しのアイコン">
-  <h1 style="margin-bottom: 1.4em;">月探し (Find Moon)</h1>
 
-  <p class="app-intro">
-    <span class="app-name">子供と月を探したい・今日はどんな月が見れる？を簡単にチェック</span>
-    「月探し」は、GPS位置情報と日付から今日の月の状態（月齢・輝面比・月の出/月の入り時刻）を計算して表示するiOSアプリです。コンパスと仰角ゲージで、今どちらを向けば空にある月に合うかもリアルタイムにわかるので、お子さんと一緒に空を見上げて月を探すときにも役立ちます。
-  </p>
+  <div class="hero">
+    <img class="app-icon-img" src="icon.png" alt="月探しのアイコン">
+    <h1>月探し (Find Moon)</h1>
+    <p class="tagline">子供と月を探したい・今日はどんな月が見れる？を簡単にチェック</p>
+    <p class="lede">
+      「月探し」は、GPS位置情報と日付から今日の月の状態（月齢・輝面比・月の出/月の入り時刻）を計算して表示するiOSアプリです。コンパスと仰角ゲージで、今どちらを向けば空にある月に合うかもリアルタイムにわかるので、お子さんと一緒に空を見上げて月を探すときにも役立ちます。
+    </p>
+  </div>
+
+  <ul class="features">
+    <li><b>🌙 今日の月</b>現在地と日付から、月齢・輝面比・月の出/月の入り時刻を計算します。</li>
+    <li><b>🧭 月を探す</b>コンパスと仰角ゲージで、空のどこに月があるかをリアルタイムに案内します。</li>
+    <li><b>🖼 全月齢ギャラリー</b>1周期ぶんの月相を一覧で確認でき、次にいつ見られるかもわかります。</li>
+  </ul>
 
   <div class="screenshots">
     <img src="screenshots/hero.png" alt="ホーム画面のスクリーンショット">
@@ -195,79 +247,81 @@
 
   <div class="divider">Privacy Policy</div>
 
-  <p class="section-title">プライバシーポリシー</p>
-  <p class="updated">最終更新日: 2026年8月22日</p>
+  <div class="policy">
+    <p class="section-title">プライバシーポリシー</p>
+    <p class="updated">最終更新日: 2026年8月22日</p>
 
-  <p class="lead">
-  本アプリ「月探し（Find Moon）」（以下「本アプリ」）は、GPS位置情報と日時から月の状態（月齢・輝面比・月の出/月の入り時刻・方位）を計算して表示するiOSアプリです。皆さまに安心してお使いいただけるよう、本アプリが取り扱う情報についてわかりやすくご説明します。
-  </p>
+    <p class="lead">
+      本アプリ「月探し（Find Moon）」（以下「本アプリ」）は、GPS位置情報と日時から月の状態（月齢・輝面比・月の出/月の入り時刻・方位）を計算して表示するiOSアプリです。皆さまに安心してお使いいただけるよう、本アプリが取り扱う情報についてわかりやすくご説明します。
+    </p>
 
-  <h2>取得する情報</h2>
-  <ul>
-    <li><strong>位置情報（GPS座標）</strong>: 現在地の月の出/月の入り時刻・方位角・仰角を計算するために使用します。</li>
-    <li><strong>方位・モーションセンサー（コンパス/ジャイロ）</strong>: 「月を探す」画面で端末が向いている方向・角度を判定するために使用します。</li>
-  </ul>
+    <h2>取得する情報</h2>
+    <ul>
+      <li><strong>位置情報（GPS座標）</strong>: 現在地の月の出/月の入り時刻・方位角・仰角を計算するために使用します。</li>
+      <li><strong>方位・モーションセンサー（コンパス/ジャイロ）</strong>: 「月を探す」画面で端末が向いている方向・角度を判定するために使用します。</li>
+    </ul>
 
-  <h2>情報の取り扱い</h2>
-  <ul>
-    <li>取得した位置情報・センサー情報は、いずれも<strong>端末内でのみ計算に使用</strong>され、外部のサーバーへ送信・保存されることはありません。</li>
-    <li>本アプリは広告SDK・アクセス解析SDK・トラッキング目的のライブラリを一切使用していません。</li>
-    <li>設定画面での表示設定など、一部の情報は端末内（UserDefaults）にのみ保存され、外部と共有されることはありません。</li>
-  </ul>
+    <h2>情報の取り扱い</h2>
+    <ul>
+      <li>取得した位置情報・センサー情報は、いずれも<strong>端末内でのみ計算に使用</strong>され、外部のサーバーへ送信・保存されることはありません。</li>
+      <li>本アプリは広告SDK・アクセス解析SDK・トラッキング目的のライブラリを一切使用していません。</li>
+      <li>設定画面での表示設定など、一部の情報は端末内（UserDefaults）にのみ保存され、外部と共有されることはありません。</li>
+    </ul>
 
-  <h2>第三者への提供</h2>
-  <p>本アプリは、取得した情報を第三者に提供・販売することはありません。</p>
+    <h2>第三者への提供</h2>
+    <p>本アプリは、取得した情報を第三者に提供・販売することはありません。</p>
 
-  <h2>お子様のプライバシーについて</h2>
-  <p>本アプリは個人を特定できる情報を取得・保存しないため、年齢を問わずご利用いただけます。</p>
+    <h2>お子様のプライバシーについて</h2>
+    <p>本アプリは個人を特定できる情報を取得・保存しないため、年齢を問わずご利用いただけます。</p>
 
-  <h2>本ポリシーの変更</h2>
-  <p>本ポリシーの内容は、本アプリの機能追加・変更に伴い予告なく更新される場合があります。変更後の内容は本ページに掲載した時点で効力を生じるものとします。</p>
+    <h2>本ポリシーの変更</h2>
+    <p>本ポリシーの内容は、本アプリの機能追加・変更に伴い予告なく更新される場合があります。変更後の内容は本ページに掲載した時点で効力を生じるものとします。</p>
 
-  <h2>お問い合わせ</h2>
-  <div class="contact-box">
-    本アプリおよび本ポリシーに関するお問い合わせは、以下のメールアドレスまでお願いします。<br>
-    <a href="mailto:albites@proton.me">albites@proton.me</a>
+    <h2>お問い合わせ</h2>
+    <div class="contact-box">
+      本アプリおよび本ポリシーに関するお問い合わせは、以下のメールアドレスまでお願いします。<br>
+      <a href="mailto:albites@proton.me">albites@proton.me</a>
+    </div>
+
+    <div class="divider">English</div>
+
+    <p class="section-title">Privacy Policy</p>
+    <p class="updated">Last updated: August 22, 2026</p>
+
+    <p class="lead">
+      "Find Moon" (the "App") is an iOS app that calculates and displays the current moon's status (moon age, illumination, moonrise/moonset times, azimuth) based on your GPS location and the current date. This policy explains, in plain language, how the App handles your information so you can use it with peace of mind.
+    </p>
+
+    <h2>Information We Collect</h2>
+    <ul>
+      <li><strong>Location data (GPS coordinates)</strong>: Used to calculate moonrise/moonset times, azimuth, and elevation for your current location.</li>
+      <li><strong>Compass / motion sensor data</strong>: Used on the "Find the Moon" screen to determine which direction and angle your device is pointing.</li>
+    </ul>
+
+    <h2>How Information Is Used</h2>
+    <ul>
+      <li>All location and sensor data is processed <strong>entirely on your device</strong> and is never transmitted to or stored on any external server.</li>
+      <li>The App does not use any advertising SDK, analytics SDK, or tracking library.</li>
+      <li>Display preferences are stored locally on your device (UserDefaults) and are never shared externally.</li>
+    </ul>
+
+    <h2>Sharing with Third Parties</h2>
+    <p>The App does not share or sell any collected information to third parties.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>Since the App does not collect any personally identifiable information, it may be used by users of any age.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>This policy may be updated without prior notice as the App's features change. Any changes take effect as soon as they are posted on this page.</p>
+
+    <h2>Contact</h2>
+    <div class="contact-box">
+      For questions about the App or this policy, please contact us by email:<br>
+      <a href="mailto:albites@proton.me">albites@proton.me</a>
+    </div>
   </div>
 
-  <div class="divider">English</div>
-
-  <p class="section-title">Privacy Policy</p>
-  <p class="updated">Last updated: August 22, 2026</p>
-
-  <p class="lead">
-  "Find Moon" (the "App") is an iOS app that calculates and displays the current moon's status (moon age, illumination, moonrise/moonset times, azimuth) based on your GPS location and the current date. This policy explains, in plain language, how the App handles your information so you can use it with peace of mind.
-  </p>
-
-  <h2>Information We Collect</h2>
-  <ul>
-    <li><strong>Location data (GPS coordinates)</strong>: Used to calculate moonrise/moonset times, azimuth, and elevation for your current location.</li>
-    <li><strong>Compass / motion sensor data</strong>: Used on the "Find the Moon" screen to determine which direction and angle your device is pointing.</li>
-  </ul>
-
-  <h2>How Information Is Used</h2>
-  <ul>
-    <li>All location and sensor data is processed <strong>entirely on your device</strong> and is never transmitted to or stored on any external server.</li>
-    <li>The App does not use any advertising SDK, analytics SDK, or tracking library.</li>
-    <li>Display preferences are stored locally on your device (UserDefaults) and are never shared externally.</li>
-  </ul>
-
-  <h2>Sharing with Third Parties</h2>
-  <p>The App does not share or sell any collected information to third parties.</p>
-
-  <h2>Children's Privacy</h2>
-  <p>Since the App does not collect any personally identifiable information, it may be used by users of any age.</p>
-
-  <h2>Changes to This Policy</h2>
-  <p>This policy may be updated without prior notice as the App's features change. Any changes take effect as soon as they are posted on this page.</p>
-
-  <h2>Contact</h2>
-  <div class="contact-box">
-    For questions about the App or this policy, please contact us by email:<br>
-    <a href="mailto:albites@proton.me">albites@proton.me</a>
-  </div>
-
-  <a class="home-link" href="../">← Albites Softwareのアプリ一覧に戻る</a>
+  <footer>© Albites Software</footer>
 </div>
 
 </body>

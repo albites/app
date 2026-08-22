@@ -6,143 +6,214 @@
 <title>Albites Software</title>
 <style>
   :root {
-    --bg: #fbf3e7;
-    --card: #fffdf8;
+    --bg: #fdf6e9;
+    --card: #fffdf9;
     --ink: #4a3f35;
-    --sub: #8a7a68;
-    --accent: #d98e46;
-    --accent-soft: #f3d9b1;
-    --line: #ecdfc9;
+    --sub: #8b7b6a;
+    --coral: #e8735a;
+    --mustard: #e5aa3a;
+    --teal: #4fa89b;
+    --line: #e8dcc6;
   }
   * { box-sizing: border-box; }
+
   body {
     font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.9;
+    line-height: 1.85;
     margin: 0;
-    padding: 56px 20px 96px;
+    padding: 0 20px 120px;
     color: var(--ink);
-    background: radial-gradient(circle at 50% -10%, #fff6e8 0%, var(--bg) 55%);
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(232, 115, 90, 0.10) 0 14px, transparent 14px),
+      radial-gradient(circle at 88% 12%, rgba(79, 168, 155, 0.12) 0 20px, transparent 20px),
+      radial-gradient(circle at 78% 62%, rgba(229, 170, 58, 0.12) 0 16px, transparent 16px),
+      radial-gradient(circle at 8% 72%, rgba(229, 170, 58, 0.10) 0 22px, transparent 22px),
+      radial-gradient(circle at 50% -12%, #fff8ec 0%, var(--bg) 60%);
+    background-attachment: fixed;
   }
-  .sheet {
-    max-width: 640px;
+
+  .wrap {
+    max-width: 1040px;
     margin: 0 auto;
+  }
+
+  /* ---- ヘッダー ---- */
+  header {
+    text-align: center;
+    padding: 72px 0 8px;
+  }
+  .avatar-frame {
+    display: inline-block;
+    padding: 6px;
     background: var(--card);
-    border-radius: 28px;
-    padding: 48px clamp(24px, 6vw, 56px) 56px;
-    box-shadow: 0 24px 60px -30px rgba(150, 110, 50, 0.35);
-    border: 1px solid var(--line);
+    border: 3px solid var(--mustard);
+    border-radius: 50%;
+    box-shadow: 0 10px 26px -14px rgba(150, 110, 50, 0.6);
+    transform: rotate(-3deg);
   }
   .avatar {
     display: block;
-    width: 76px;
-    height: 76px;
-    margin: 0 auto 18px;
+    width: 104px;
+    height: 104px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--accent-soft);
   }
   h1 {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 0 0 4px;
-    color: #7a5326;
+    font-size: clamp(1.8em, 4vw, 2.4em);
+    margin: 22px 0 6px;
+    color: #6d4a1f;
+    letter-spacing: 0.02em;
   }
   .handle {
-    text-align: center;
     color: var(--sub);
-    font-size: 0.9em;
-    margin-bottom: 1.6em;
+    font-size: 0.88em;
+    margin: 0 0 30px;
   }
+  .handle a {
+    color: var(--sub);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--sub);
+  }
+
   .intro {
-    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 2px dashed var(--mustard);
+    border-radius: 24px;
+    padding: 26px 32px;
     color: #6b5842;
-    background: #fdf5e6;
-    border: 1px solid var(--accent-soft);
-    border-radius: 16px;
-    padding: 18px 22px;
-    margin-bottom: 2.6em;
+    text-align: center;
   }
-  h2.section {
-    font-size: 1.05em;
-    color: #7a5326;
-    margin-bottom: 1em;
+  .intro strong { color: var(--coral); }
+
+  /* ---- セクション見出し ---- */
+  .section-head {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
+    margin: 68px 0 26px;
   }
-  h2.section::before {
+  .section-head h2 {
+    font-size: 1.25em;
+    color: #6d4a1f;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .section-head::after {
     content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
+    flex: 1;
+    height: 3px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--mustard) 0 14px,
+      transparent 14px 26px
+    );
   }
-  ul.apps {
+  .chip {
+    background: var(--coral);
+    color: #fff;
+    font-size: 0.72em;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- アプリカード ---- */
+  .apps {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 22px;
   }
-  ul.apps li {
-    margin-bottom: 14px;
-  }
-  ul.apps a {
+  .apps a {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 18px 22px;
-    background: #fdf5e6;
-    border: 1px solid var(--accent-soft);
-    border-radius: 16px;
+    gap: 18px;
+    height: 100%;
+    padding: 24px 26px;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 22px;
     text-decoration: none;
-    color: #7a5326;
-    font-weight: bold;
-    transition: background 0.15s ease, transform 0.15s ease;
+    color: inherit;
+    box-shadow: 0 12px 26px -20px rgba(150, 110, 50, 0.7);
+    transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
   }
-  ul.apps a:hover {
-    background: var(--accent-soft);
-    transform: translateY(-1px);
+  .apps a:hover {
+    transform: translateY(-4px) rotate(-0.6deg);
+    border-color: var(--mustard);
+    box-shadow: 0 20px 34px -22px rgba(150, 110, 50, 0.85);
   }
-  ul.apps img.app-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+  .app-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
     flex-shrink: 0;
-    box-shadow: 0 4px 10px -4px rgba(150, 110, 50, 0.4);
+    box-shadow: 0 6px 14px -7px rgba(60, 40, 20, 0.5);
   }
-  ul.apps span.desc {
+  .app-name {
     display: block;
-    font-weight: normal;
+    font-weight: bold;
+    color: #6d4a1f;
+    font-size: 1.02em;
+  }
+  .app-desc {
+    display: block;
+    font-size: 0.84em;
     color: var(--sub);
-    font-size: 0.85em;
-    margin-top: 2px;
+    line-height: 1.65;
+    margin-top: 3px;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--sub);
+    font-size: 0.8em;
+    margin-top: 80px;
   }
 </style>
 </head>
 <body>
 
-<div class="sheet">
-  <img class="avatar" src="https://github.com/kaleidot725.png" alt="Katz">
-  <h1>Albites Software</h1>
-  <p class="handle">Developed by Katz ・ GitHub: @albites / @kaleidot725</p>
+<div class="wrap">
+  <header>
+    <span class="avatar-frame"><img class="avatar" src="https://github.com/kaleidot725.png" alt="Katz"></span>
+    <h1>Albites Software</h1>
+    <p class="handle">
+      Developed by Katz ・
+      <a href="https://github.com/albites">@albites</a> /
+      <a href="https://github.com/kaleidot725">@kaleidot725</a>
+    </p>
 
-  <p class="intro">
-  はじめまして、Katzです。普段はエンジニアとして働いています。<br>
-  Albites Softwareという名義で、個人開発としてアプリを作っています。
-  </p>
+    <p class="intro">
+      はじめまして、<strong>Katz</strong>です。普段はエンジニアとして働いています。<br>
+      <strong>Albites Software</strong>という名義で、個人開発としてアプリを作っています。
+    </p>
+  </header>
 
-  <h2 class="section">アプリ一覧</h2>
+  <div class="section-head">
+    <h2>アプリ一覧</h2>
+    <span class="chip">APPS</span>
+  </div>
+
   <ul class="apps">
     <li>
       <a href="find-moon/">
         <img class="app-icon" src="find-moon/icon.png" alt="月探しのアイコン">
         <div>
-          月探し (Find Moon)
-          <span class="desc">子供と月を探したい・今日はどんな月が見れるか、簡単にチェックできるアプリ</span>
+          <span class="app-name">月探し (Find Moon)</span>
+          <span class="app-desc">子供と月を探したい・今日はどんな月が見れるか、簡単にチェックできるアプリ</span>
         </div>
       </a>
     </li>
   </ul>
+
+  <footer>© Albites Software</footer>
 </div>
 
 </body>
