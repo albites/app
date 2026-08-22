@@ -5,50 +5,92 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>プライバシーポリシー一覧 | albites</title>
 <style>
+  :root {
+    --bg: #fbf3e7;
+    --card: #fffdf8;
+    --ink: #4a3f35;
+    --sub: #8a7a68;
+    --accent: #d98e46;
+    --accent-soft: #f3d9b1;
+    --line: #ecdfc9;
+  }
+  * { box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-    line-height: 1.8;
-    max-width: 720px;
+    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.9;
+    margin: 0;
+    padding: 56px 20px 96px;
+    color: var(--ink);
+    background: radial-gradient(circle at 50% -10%, #fff6e8 0%, var(--bg) 55%);
+  }
+  .sheet {
+    max-width: 640px;
     margin: 0 auto;
-    padding: 40px 20px 80px;
-    color: #1a1a1a;
-    background: #ffffff;
+    background: var(--card);
+    border-radius: 28px;
+    padding: 48px clamp(24px, 6vw, 56px) 56px;
+    box-shadow: 0 24px 60px -30px rgba(150, 110, 50, 0.35);
+    border: 1px solid var(--line);
+  }
+  .moon {
+    font-size: 2.4em;
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;
   }
   h1 {
-    font-size: 1.6em;
-    border-bottom: 2px solid #333;
-    padding-bottom: 12px;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0 0 10px;
+    color: #7a5326;
+  }
+  .lead {
+    text-align: center;
+    color: var(--sub);
+    margin-bottom: 2.6em;
   }
   ul.apps {
     list-style: none;
     padding: 0;
-    margin-top: 2em;
+    margin: 0;
   }
   ul.apps li {
-    margin-bottom: 1em;
+    margin-bottom: 14px;
   }
   ul.apps a {
-    display: block;
-    padding: 16px 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 22px;
+    background: #fdf5e6;
+    border: 1px solid var(--accent-soft);
+    border-radius: 16px;
     text-decoration: none;
-    color: #0a5ea8;
+    color: #7a5326;
     font-weight: bold;
+    transition: background 0.15s ease, transform 0.15s ease;
   }
   ul.apps a:hover {
-    background: #f5f5f5;
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+  ul.apps a::before {
+    content: "🌙";
+    font-size: 1.2em;
   }
 </style>
 </head>
 <body>
 
-<h1>プライバシーポリシー一覧</h1>
-<p>各アプリのプライバシーポリシーは以下から確認できます。</p>
+<div class="sheet">
+  <span class="moon">🌙</span>
+  <h1>プライバシーポリシー一覧</h1>
+  <p class="lead">各アプリのプライバシーポリシーは以下からご確認いただけます。</p>
 
-<ul class="apps">
-  <li><a href="find-moon/">月探し (Find Moon)</a></li>
-</ul>
+  <ul class="apps">
+    <li><a href="find-moon/">月探し (Find Moon)</a></li>
+  </ul>
+</div>
 
 </body>
 </html>
