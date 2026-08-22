@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プライバシーポリシー | 月サーチ (Find Moon)</title>
+<title>プライバシーポリシー一覧 | albites</title>
 <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
@@ -19,103 +19,36 @@
     border-bottom: 2px solid #333;
     padding-bottom: 12px;
   }
-  h2 {
-    font-size: 1.2em;
+  ul.apps {
+    list-style: none;
+    padding: 0;
     margin-top: 2em;
-    border-left: 4px solid #555;
-    padding-left: 10px;
   }
-  .updated {
-    color: #666;
-    font-size: 0.9em;
-    margin-bottom: 2em;
+  ul.apps li {
+    margin-bottom: 1em;
   }
-  ul {
-    padding-left: 1.4em;
-  }
-  a {
+  ul.apps a {
+    display: block;
+    padding: 16px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
     color: #0a5ea8;
+    font-weight: bold;
   }
-  hr {
-    margin: 3em 0;
-    border: none;
-    border-top: 1px solid #ddd;
+  ul.apps a:hover {
+    background: #f5f5f5;
   }
 </style>
 </head>
 <body>
 
-<h1>プライバシーポリシー（月サーチ / Find Moon）</h1>
-<p class="updated">最終更新日: 2026年8月22日</p>
+<h1>プライバシーポリシー一覧</h1>
+<p>各アプリのプライバシーポリシーは以下から確認できます。</p>
 
-<p>
-本アプリ「月サーチ（Find Moon）」（以下「本アプリ」）は、GPS位置情報と日時から月の状態（月齢・輝面比・月の出/月の入り時刻・方位）を計算して表示するiOSアプリです。本ポリシーでは、本アプリが取り扱う情報について説明します。
-</p>
-
-<h2>取得する情報</h2>
-<ul>
-  <li><strong>位置情報（GPS座標）</strong>: 現在地の月の出/月の入り時刻・方位角・仰角を計算するために使用します。</li>
-  <li><strong>方位・モーションセンサー（コンパス/ジャイロ）</strong>: 「月を探す」画面で端末が向いている方向・角度を判定するために使用します。</li>
+<ul class="apps">
+  <li><a href="find-moon/">月サーチ (Find Moon)</a></li>
 </ul>
-
-<h2>情報の取り扱い</h2>
-<ul>
-  <li>取得した位置情報・センサー情報は、いずれも<strong>端末内でのみ計算に使用</strong>され、外部のサーバーへ送信・保存されることはありません。</li>
-  <li>本アプリは広告SDK・アクセス解析SDK・トラッキング目的のライブラリを一切使用していません。</li>
-  <li>設定画面での表示設定など、一部の情報は端末内（UserDefaults）にのみ保存され、外部と共有されることはありません。</li>
-</ul>
-
-<h2>第三者への提供</h2>
-<p>本アプリは、取得した情報を第三者に提供・販売することはありません。</p>
-
-<h2>お子様のプライバシーについて</h2>
-<p>本アプリは個人を特定できる情報を取得・保存しないため、年齢を問わずご利用いただけます。</p>
-
-<h2>本ポリシーの変更</h2>
-<p>本ポリシーの内容は、本アプリの機能追加・変更に伴い予告なく更新される場合があります。変更後の内容は本ページに掲載した時点で効力を生じるものとします。</p>
-
-<h2>お問い合わせ</h2>
-<p>
-本アプリおよび本ポリシーに関するお問い合わせは、以下のGitHub Issuesまでお願いします。<br>
-<a href="https://github.com/albites/FindMoon/issues">https://github.com/albites/FindMoon/issues</a>
-</p>
-
-<hr>
-
-<h1>Privacy Policy (Find Moon / 月サーチ)</h1>
-<p class="updated">Last updated: August 22, 2026</p>
-
-<p>
-"Find Moon" (the "App") is an iOS app that calculates and displays the current moon's status (moon age, illumination, moonrise/moonset times, azimuth) based on your GPS location and the current date. This policy explains how the App handles information.
-</p>
-
-<h2>Information We Collect</h2>
-<ul>
-  <li><strong>Location data (GPS coordinates)</strong>: Used to calculate moonrise/moonset times, azimuth, and elevation for your current location.</li>
-  <li><strong>Compass / motion sensor data</strong>: Used on the "Find the Moon" screen to determine which direction and angle your device is pointing.</li>
-</ul>
-
-<h2>How Information Is Used</h2>
-<ul>
-  <li>All location and sensor data is processed <strong>entirely on your device</strong> and is never transmitted to or stored on any external server.</li>
-  <li>The App does not use any advertising SDK, analytics SDK, or tracking library.</li>
-  <li>Display preferences are stored locally on your device (UserDefaults) and are never shared externally.</li>
-</ul>
-
-<h2>Sharing with Third Parties</h2>
-<p>The App does not share or sell any collected information to third parties.</p>
-
-<h2>Children's Privacy</h2>
-<p>Since the App does not collect any personally identifiable information, it may be used by users of any age.</p>
-
-<h2>Changes to This Policy</h2>
-<p>This policy may be updated without prior notice as the App's features change. Any changes take effect as soon as they are posted on this page.</p>
-
-<h2>Contact</h2>
-<p>
-For questions about the App or this policy, please contact us via GitHub Issues:<br>
-<a href="https://github.com/albites/FindMoon/issues">https://github.com/albites/FindMoon/issues</a>
-</p>
 
 </body>
 </html>
