@@ -40,35 +40,41 @@
 
   /* ---- ヘッダー ---- */
   header {
-    text-align: center;
-    padding: 72px 0 8px;
+    padding: 76px 0 8px;
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
   }
   .avatar-frame {
-    display: inline-block;
+    display: block;
     padding: 6px;
     background: var(--card);
     border: 3px solid var(--mustard);
     border-radius: 50%;
     box-shadow: 0 10px 26px -14px rgba(150, 110, 50, 0.6);
     transform: rotate(-3deg);
+    flex-shrink: 0;
   }
   .avatar {
     display: block;
-    width: 104px;
-    height: 104px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     object-fit: cover;
   }
   h1 {
     font-size: clamp(1.8em, 4vw, 2.4em);
-    margin: 22px 0 6px;
+    margin: 0 0 4px;
     color: #6d4a1f;
     letter-spacing: 0.02em;
   }
   .handle {
     color: var(--sub);
     font-size: 0.88em;
-    margin: 0 0 30px;
+    margin: 0;
   }
   .handle a {
     color: var(--sub);
@@ -77,14 +83,12 @@
   }
 
   .intro {
-    max-width: 680px;
-    margin: 0 auto;
+    margin: 30px 0 0;
     background: var(--card);
     border: 2px dashed var(--mustard);
     border-radius: 24px;
     padding: 26px 32px;
     color: #6b5842;
-    text-align: center;
   }
   .intro strong { color: var(--coral); }
 
@@ -171,10 +175,11 @@
   }
 
   footer {
-    text-align: center;
     color: var(--sub);
     font-size: 0.8em;
     margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
   }
 </style>
 </head>
@@ -182,13 +187,17 @@
 
 <div class="wrap">
   <header>
-    <span class="avatar-frame"><img class="avatar" src="https://github.com/kaleidot725.png" alt="Katz"></span>
-    <h1>Albites Software</h1>
-    <p class="handle">
-      Developed by Katz ・
-      <a href="https://github.com/albites">@albites</a> /
-      <a href="https://github.com/kaleidot725">@kaleidot725</a>
-    </p>
+    <div class="profile">
+      <span class="avatar-frame"><img class="avatar" src="https://github.com/kaleidot725.png" alt="Katz"></span>
+      <div>
+        <h1>Albites Software</h1>
+        <p class="handle">
+          Developed by Katz ・
+          <a href="https://github.com/albites">@albites</a> /
+          <a href="https://github.com/kaleidot725">@kaleidot725</a>
+        </p>
+      </div>
+    </div>
 
     <p class="intro">
       はじめまして、<strong>Katz</strong>です。普段はエンジニアとして働いています。<br>
