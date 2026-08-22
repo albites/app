@@ -9,25 +9,26 @@
   :root {
     /* ===== 共通パラメーター（全ページで同じ値にすること） ===== */
     --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
-    --lh: 1.85;
+    --lh: 1.9;
+    --fs-base: 18px;
     --wrap: 1040px;
     --r-lg: 24px;
     --r-md: 18px;
     --r-sm: 16px;
     --pad-page: 0 20px 140px;
     --pad-head: 84px;
-    --pad-card: 22px 24px;
-    --pad-panel: 34px clamp(24px, 5vw, 44px) 40px;
+    --pad-card: 24px 26px;
+    --pad-panel: 36px clamp(24px, 5vw, 46px) 42px;
     --gap-grid: 20px;
     --gap-profile: 26px;
-    --size-avatar: 96px;
-    --size-appicon: 64px;
-    --fs-h1: clamp(1.8em, 4vw, 2.35em);
-    --fs-h2: 1.12em;
-    --fs-h3: 1.02em;
-    --fs-sub: 0.86em;
-    --fs-small: 0.83em;
-    --fs-foot: 0.78em;
+    --size-avatar: 104px;
+    --size-appicon: 68px;
+    --fs-h1: clamp(1.9em, 4.6vw, 2.6em);
+    --fs-h2: 1.3em;
+    --fs-h3: 1.12em;
+    --fs-body: 1em;
+    --fs-meta: 0.92em;
+    --fs-foot: 0.86em;
     --mt-section: 72px;
     --mb-section: 26px;
 
@@ -46,6 +47,7 @@
 
   body {
     font-family: var(--font);
+    font-size: var(--fs-base);
     line-height: var(--lh);
     margin: 0;
     padding: var(--pad-page);
@@ -82,7 +84,7 @@
   .back-link {
     display: inline-block;
     margin: 40px 0 0;
-    font-size: var(--fs-sub);
+    font-size: var(--fs-meta);
     color: var(--sub);
   }
   .back-link:hover { color: var(--accent); text-decoration: none; }
@@ -116,14 +118,14 @@
   }
   .tagline {
     color: var(--accent);
-    font-size: var(--fs-sub);
+    font-size: var(--fs-body);
     margin: 0;
   }
   .lede {
     max-width: 760px;
     margin: 32px 0 0;
-    color: var(--sub);
-    font-size: var(--fs-sub);
+    color: var(--body);
+    font-size: var(--fs-body);
     /* 日本語を文節単位で折り返す（未対応ブラウザでは通常の折り返し） */
     word-break: auto-phrase;
     line-break: strict;
@@ -143,7 +145,7 @@
     border: 1px solid var(--line);
     border-radius: var(--r-md);
     padding: var(--pad-card);
-    font-size: var(--fs-small);
+    font-size: var(--fs-meta);
     color: var(--sub);
     line-height: 1.7;
   }
@@ -193,8 +195,8 @@
   .chip {
     background: rgba(245, 228, 184, 0.14);
     color: var(--accent);
-    font-size: 0.7em;
-    padding: 3px 12px;
+    font-size: var(--fs-foot);
+    padding: 3px 14px;
     border-radius: 999px;
     letter-spacing: 0.12em;
     font-weight: 700;
@@ -215,7 +217,7 @@
   }
   .updated {
     color: var(--sub);
-    font-size: var(--fs-small);
+    font-size: var(--fs-meta);
     margin: 0 0 2em;
   }
   .lead {
@@ -224,7 +226,7 @@
     border-radius: var(--r-sm);
     padding: var(--pad-card);
     color: var(--body);
-    font-size: var(--fs-sub);
+    font-size: var(--fs-body);
     margin: 0;
   }
   h2 {
@@ -248,17 +250,17 @@
   .policy ul {
     padding-left: 1.3em;
     margin: 0;
-    font-size: var(--fs-sub);
+    font-size: var(--fs-body);
   }
   .policy li { margin-bottom: 0.5em; }
-  .policy p { font-size: var(--fs-sub); }
+  .policy p { font-size: var(--fs-body); }
   strong { color: var(--ink); }
   .contact-box {
     background: rgba(245, 228, 184, 0.07);
     border: 1px solid var(--accent-soft);
     border-radius: var(--r-sm);
     padding: var(--pad-card);
-    font-size: var(--fs-sub);
+    font-size: var(--fs-body);
   }
   .policy .divider {
     margin: 3.4em 0 var(--mb-section);
