@@ -147,6 +147,32 @@
     margin: 0 auto 16px;
     box-shadow: 0 8px 20px -10px rgba(150, 110, 50, 0.5);
   }
+  .screenshots {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 4px 4px 12px;
+    margin-bottom: 2.4em;
+  }
+  .screenshots img {
+    height: 320px;
+    border-radius: 18px;
+    box-shadow: 0 16px 30px -18px rgba(150, 110, 50, 0.45);
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 1.3em;
+    color: #7a5326;
+    margin: 0 0 0.3em;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--sub);
+    font-size: 0.85em;
+    margin-bottom: 2em;
+  }
 </style>
 </head>
 <body>
@@ -161,7 +187,15 @@
     「月探し」は、GPS位置情報と日付から今日の月の状態（月齢・輝面比・月の出/月の入り時刻）を計算して表示するiOSアプリです。コンパスと仰角ゲージで、今どちらを向けば空にある月に合うかもリアルタイムにわかるので、お子さんと一緒に空を見上げて月を探すときにも役立ちます。
   </p>
 
-  <h1 style="font-size:1.2em;">プライバシーポリシー</h1>
+  <div class="screenshots">
+    <img src="screenshots/hero.png" alt="ホーム画面のスクリーンショット">
+    <img src="screenshots/gallery.png" alt="全月齢ギャラリーのスクリーンショット">
+    <img src="screenshots/settings.png" alt="設定画面のスクリーンショット">
+  </div>
+
+  <div class="divider">Privacy Policy</div>
+
+  <p class="section-title">プライバシーポリシー</p>
   <p class="updated">最終更新日: 2026年8月22日</p>
 
   <p class="lead">
@@ -198,7 +232,7 @@
 
   <div class="divider">English</div>
 
-  <h1 style="font-size:1.3em;">Privacy Policy (Find Moon / 月探し)</h1>
+  <p class="section-title">Privacy Policy</p>
   <p class="updated">Last updated: August 22, 2026</p>
 
   <p class="lead">
