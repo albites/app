@@ -113,13 +113,44 @@
     margin-top: 3em;
     font-size: 0.9em;
   }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.8em;
+    font-size: 0.85em;
+    color: var(--sub);
+    border-bottom: none;
+  }
+  .app-intro {
+    text-align: center;
+    color: #6b5842;
+    background: #fdf5e6;
+    border: 1px solid var(--accent-soft);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 2.4em;
+  }
+  .app-intro .app-name {
+    display: block;
+    font-weight: bold;
+    color: #7a5326;
+    font-size: 1.05em;
+    margin-bottom: 6px;
+  }
 </style>
 </head>
 <body>
 
 <div class="sheet">
+  <a class="back-link" href="../">← albitesのアプリ一覧</a>
   <span class="moon">🌙</span>
-  <h1>プライバシーポリシー（月探し / Find Moon）</h1>
+  <h1 style="margin-bottom: 1.4em;">月探し (Find Moon)</h1>
+
+  <p class="app-intro">
+    <span class="app-name">🌙 月探し (Find Moon)</span>
+    GPS位置情報と日付から、今日の月の状態（月齢・輝面比・月の出/月の入り時刻）を計算して表示するiOSアプリです。コンパスと仰角ゲージで、今どちらを向けば空にある月に合うかもリアルタイムに確認できます。
+  </p>
+
+  <h1 style="font-size:1.2em;">プライバシーポリシー</h1>
   <p class="updated">最終更新日: 2026年8月22日</p>
 
   <p class="lead">
@@ -191,7 +222,7 @@
     <a href="https://github.com/albites/FindMoon/issues">github.com/albites/FindMoon/issues</a>
   </div>
 
-  <a class="home-link" href="../">← プライバシーポリシー一覧に戻る</a>
+  <a class="home-link" href="../">← albitesのアプリ一覧に戻る</a>
 </div>
 
 </body>

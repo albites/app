@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プライバシーポリシー一覧 | albites</title>
+<title>albites</title>
 <style>
   :root {
     --bg: #fbf3e7;
@@ -32,22 +32,55 @@
     box-shadow: 0 24px 60px -30px rgba(150, 110, 50, 0.35);
     border: 1px solid var(--line);
   }
-  .moon {
-    font-size: 2.4em;
+  .avatar {
     display: block;
-    text-align: center;
-    margin-bottom: 8px;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: #7a5326;
+    font-size: 2.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   h1 {
     font-size: 1.5em;
     text-align: center;
-    margin: 0 0 10px;
+    margin: 0 0 4px;
     color: #7a5326;
   }
-  .lead {
+  .handle {
     text-align: center;
     color: var(--sub);
+    font-size: 0.9em;
+    margin-bottom: 1.6em;
+  }
+  .intro {
+    text-align: center;
+    color: #6b5842;
+    background: #fdf5e6;
+    border: 1px solid var(--accent-soft);
+    border-radius: 16px;
+    padding: 18px 22px;
     margin-bottom: 2.6em;
+  }
+  h2.section {
+    font-size: 1.05em;
+    color: #7a5326;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2.section::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
   }
   ul.apps {
     list-style: none;
@@ -78,17 +111,37 @@
     content: "🌙";
     font-size: 1.2em;
   }
+  ul.apps span.desc {
+    display: block;
+    font-weight: normal;
+    color: var(--sub);
+    font-size: 0.85em;
+    margin-top: 2px;
+  }
 </style>
 </head>
 <body>
 
 <div class="sheet">
-  <span class="moon">🌙</span>
-  <h1>プライバシーポリシー一覧</h1>
-  <p class="lead">各アプリのプライバシーポリシーは以下からご確認いただけます。</p>
+  <div class="avatar">🌤️</div>
+  <h1>albites</h1>
+  <p class="handle">GitHub: @albites / @kaleidot725</p>
 
+  <p class="intro">
+  普段はエンジニアとして働いています。個人開発として、日常に役立つシンプルなiOSアプリを作っています。<br>
+  このページでは、公開しているアプリの紹介と、各アプリのプライバシーポリシーをまとめています。
+  </p>
+
+  <h2 class="section">アプリ一覧</h2>
   <ul class="apps">
-    <li><a href="find-moon/">月探し (Find Moon)</a></li>
+    <li>
+      <a href="find-moon/">
+        <div>
+          月探し (Find Moon)
+          <span class="desc">GPS位置情報と日付から、今日の月の状態を計算して表示するアプリ</span>
+        </div>
+      </a>
+    </li>
   </ul>
 </div>
 
