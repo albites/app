@@ -104,6 +104,9 @@
     z-index: 1;
   }
 
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
   /* ---- トップバー（全ページで同じ高さを確保して先頭位置を揃える） ---- */
   .topbar {
     padding-top: var(--pad-top);
@@ -236,6 +239,16 @@
     color: var(--sub);
     line-height: 1.75;
     margin-top: 3px;
+  }
+
+  .contact-box {
+    background: var(--card);
+    border: 1px solid var(--accent-soft);
+    border-radius: var(--r-sm);
+    padding: var(--pad-card);
+    font-size: var(--fs-body);
+    color: var(--body);
+    box-shadow: 0 14px 30px -26px rgba(34, 53, 76, 0.7);
   }
 
   footer {
@@ -377,6 +390,16 @@
       </a>
     </li>
   </ul>
+
+  <div class="section-head" id="contact">
+    <h2>お問い合わせ</h2>
+    <span class="chip">CONTACT</span>
+  </div>
+
+  <div class="contact-box">
+    アプリの使い方のご質問、ご要望、不具合のご報告などは、以下のメールアドレスまでお気軽にご連絡ください。<br>
+    <a href="mailto:albites@proton.me">albites@proton.me</a>
+  </div>
 
   <footer>© Albites Software</footer>
 </div>
