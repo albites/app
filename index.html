@@ -16,7 +16,8 @@
     --r-md: 18px;
     --r-sm: 16px;
     --pad-page: 0 20px 200px;
-    --pad-head: 84px;
+    --pad-top: 40px;
+    --pad-hero: 44px;
     --pad-card: 24px 26px;
     --pad-panel: 36px clamp(24px, 5vw, 46px) 42px;
     --gap-grid: 20px;
@@ -92,9 +93,16 @@
     z-index: 1;
   }
 
+  /* ---- トップバー（全ページで同じ高さを確保して先頭位置を揃える） ---- */
+  .topbar {
+    padding-top: var(--pad-top);
+    min-height: calc(var(--pad-top) + 1.9em);
+    font-size: var(--fs-meta);
+  }
+
   /* ---- ヒーロー ---- */
   .hero {
-    padding: var(--pad-head) 0 8px;
+    padding: var(--pad-hero) 0 8px;
   }
   .hero-head {
     display: flex;
@@ -272,6 +280,8 @@
 </svg>
 
 <div class="wrap">
+  <div class="topbar"></div>
+
   <div class="hero">
     <div class="hero-head">
       <img class="avatar" src="https://github.com/kaleidot725.png" alt="Katz">
